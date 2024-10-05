@@ -7,10 +7,10 @@
 
 import * as Headless from '@headlessui/react'
 import React, { forwardRef } from 'react'
-import { Link as ReactLink, LinkProps } from 'react-router-dom'
+import { LinkProps, Link as ReactLink } from 'react-router-dom'
 
 export const Link = forwardRef(function Link(
-  props: { href: string | LinkProps['to']  } & Omit<LinkProps, 'to'>,
+  props: { href: string | LinkProps['to'] } & Omit<LinkProps, 'to'>,
   ref: React.ForwardedRef<HTMLAnchorElement>
 ) {
   return (

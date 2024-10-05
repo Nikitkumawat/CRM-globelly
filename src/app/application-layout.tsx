@@ -1,14 +1,18 @@
 import {
   ArrowRightStartOnRectangleIcon,
   BeakerIcon,
+  BuildingOfficeIcon,
+  CalendarIcon,
   ChevronUpIcon,
   CircleStackIcon,
+  ClipboardIcon,
+  CurrencyDollarIcon,
   FolderIcon,
+  HomeIcon,
   InformationCircleIcon,
   UserGroupIcon,
   UserIcon,
 } from '@heroicons/react/16/solid'
-import { HomeIcon } from '@heroicons/react/20/solid'
 import { Dropdown, DropdownButton, DropdownItem, DropdownLabel, DropdownMenu } from 'components/catalyst/dropdown'
 import {
   Sidebar,
@@ -37,7 +41,7 @@ function AccountDropdownMenu({ anchor }: { anchor: 'top start' | 'bottom end' })
 export function ApplicationLayout() {
   const location = useLocation()
   const { globalPermissions } = useAuth()
-  
+
   return (
     <SidebarLayout
       navbar={null}
@@ -51,19 +55,72 @@ export function ApplicationLayout() {
                 <HomeIcon />
                 <SidebarLabel>Home</SidebarLabel>
               </SidebarItem>
-              <SidebarItem href="/projects" current={location.pathname === 'projects'}>
+
+              <SidebarItem href="/projects" current={location.pathname === '/projects'}>
                 <FolderIcon />
                 <SidebarLabel>Projects</SidebarLabel>
               </SidebarItem>
+
+              <SidebarItem href="/global-config" current={location.pathname === '/global-config'}>
+                <InformationCircleIcon />
+                <SidebarLabel>Global Config</SidebarLabel>
+              </SidebarItem>
+
+              <SidebarItem href="/leads" current={location.pathname === '/leads'}>
+                <UserGroupIcon />
+                <SidebarLabel>Leads</SidebarLabel>
+              </SidebarItem>
+
+              <SidebarItem href="/data" current={location.pathname === '/data'}>
+                <FolderIcon />
+                <SidebarLabel>Data</SidebarLabel>
+              </SidebarItem>
+
+              <SidebarItem href="/invoice" current={location.pathname === '/invoice'}>
+                <CurrencyDollarIcon />
+                <SidebarLabel>Invoice</SidebarLabel>
+              </SidebarItem>
+
+              <SidebarItem href="/reports" current={location.pathname === '/reports'}>
+                <CircleStackIcon />
+                <SidebarLabel>Reports</SidebarLabel>
+              </SidebarItem>
+
+              <SidebarItem href="/properties" current={location.pathname === '/properties'}>
+                <BuildingOfficeIcon />
+                <SidebarLabel>Properties</SidebarLabel>
+              </SidebarItem>
+
+              <SidebarItem href="/attendance" current={location.pathname === '/attendance'}>
+                <CalendarIcon />
+                <SidebarLabel>Attendance</SidebarLabel>
+              </SidebarItem>
+
+              <SidebarItem href="/tasks" current={location.pathname === '/tasks'}>
+                <ClipboardIcon />
+                <SidebarLabel>Tasks</SidebarLabel>
+              </SidebarItem>
+
+              <SidebarItem href="/team" current={location.pathname === '/team'}>
+                <UserIcon />
+                <SidebarLabel>Team</SidebarLabel>
+              </SidebarItem>
+
+              <SidebarItem href="/org-profile" current={location.pathname === '/org-profile'}>
+                <BuildingOfficeIcon />
+                <SidebarLabel>Org Profile</SidebarLabel>
+              </SidebarItem>
             </SidebarSection>
 
-            {globalPermissions.includes("PermissionNameDTO.AUTH_USER_UPDATE") && (
+            {/* Admin section only visible with permission */}
+            {globalPermissions.includes('PermissionNameDTO.AUTH_USER_UPDATE') && (
               <SidebarSection>
                 <SidebarHeading>Admin</SidebarHeading>
                 <SidebarItem href="/users" current={location.pathname === '/users'}>
                   <UserIcon />
                   <SidebarLabel>Users</SidebarLabel>
                 </SidebarItem>
+
                 <SidebarItem href="/groups" current={location.pathname === '/groups'}>
                   <UserGroupIcon />
                   <SidebarLabel>Groups</SidebarLabel>
@@ -71,6 +128,7 @@ export function ApplicationLayout() {
               </SidebarSection>
             )}
 
+            {/* Additional Links */}
             <SidebarSection>
               <SidebarHeading>Links</SidebarHeading>
               <SidebarItem>
@@ -83,6 +141,7 @@ export function ApplicationLayout() {
               </SidebarItem>
             </SidebarSection>
 
+            {/* Help Section */}
             <SidebarSection>
               <SidebarHeading>Help</SidebarHeading>
               <SidebarItem>
