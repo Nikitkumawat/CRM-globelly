@@ -6,13 +6,20 @@ import { createBrowserRouter, isRouteErrorResponse, RouterProvider, useRouteErro
 import { ApplicationLayout } from 'src/app/application-layout.tsx'
 import { AuthProvider } from 'src/context/AuthContext.tsx'
 import './index.css'
+import Attendance from './pages/Attendance/Attendance'
+import Data from './pages/Data/Data'
+import GlobalConfig from './pages/GlobalConfig/GlobalConfig'
+import Invoice from './pages/Invoice/Invoice'
+import Leads from './pages/Leads/Leads'
+import OrgProfile from './pages/OrgProfile/OrgProfile'
 import Dashboard from './pages/projects/dashboard'
+import Reports from './pages/Reports/Reports'
+import Tasks from './pages/Tasks/Tasks'
+import Team from './pages/Team/Team'
+import Projects from './pages/projects/Projects'
+import Properties from './pages/Properties/Properties'
 
-// if (process.env.NODE_ENV === 'development') {
-//     require('./mock');
-// }
-
-const queryClient = new QueryClient({})
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -25,20 +32,56 @@ const router = createBrowserRouter([
     errorElement: <ErrorBoundary />,
     children: [
       {
-        path: 'users',
-        element: <Dashboard />,
-      },
-      {
-        path: 'groups',
+        path: '/',
         element: <Dashboard />,
       },
       {
         path: '/projects',
-        element: <Dashboard />
-      }
+        element: <Projects />,
+      },
+      {
+        path: 'global-config',
+        element: <GlobalConfig />,
+      },
+      {
+        path: 'leads',
+        element: <Leads />,
+      },
+      {
+        path: 'data',
+        element: <Data />,
+      },
+      {
+        path: 'invoice',
+        element: <Invoice />,
+      },
+      {
+        path: 'reports',
+        element: <Reports />,
+      },
+
+      {
+        path: 'properties',
+        element: <Properties />,
+      },
+      {
+        path: 'attendance',
+        element: <Attendance />,
+      },
+      {
+        path: 'tasks',
+        element: <Tasks />,
+      },
+      {
+        path: 'team',
+        element: <Team />,
+      },
+      {
+        path: 'org-profile',
+        element: <OrgProfile />,
+      },
     ],
   },
-  
 ])
 
 createRoot(document.getElementById('root')!).render(
@@ -59,6 +102,5 @@ function ErrorBoundary() {
     return <div>{error.statusText}</div>
   }
 
-  // Uncaught ReferenceError: path is not defined
   return <div>Uncaught Error</div>
 }

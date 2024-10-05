@@ -1,6 +1,5 @@
 import { ReactNode, useState } from 'react'
 
-import axios from 'axios'
 import { useAuth } from 'src/context/AuthContext.tsx'
 
 export default function Authenticated({ children }: { children: ReactNode }) {
@@ -15,6 +14,6 @@ export default function Authenticated({ children }: { children: ReactNode }) {
   //if (!isAuthenticated) {
   //  window.location.replace("/auth/login");
   //} else {
-    return <>{children}</>
+  return <>{children}</>
   //}
 }

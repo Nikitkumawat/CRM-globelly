@@ -24,7 +24,6 @@ const defaultConfig: UserConfig = {
 export default defineConfig(({ command, mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
   if (command === 'serve' && process.env.VITE_ENABLE_PROXY === 'true') {
-  
     return {
       ...defaultConfig,
       plugins: [react(), DevPlugin()],

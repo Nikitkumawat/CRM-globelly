@@ -7,11 +7,10 @@ const cookieDetailsName = 'token_details'
 
 // Fill user properties here.
 interface UserDTO {
-  firstName: string;
-  lastName: string;
-  email: string;
+  firstName: string
+  lastName: string
+  email: string
 }
-
 
 interface AuthState {
   isInitialized: boolean
